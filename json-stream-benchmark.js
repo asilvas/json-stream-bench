@@ -15,6 +15,7 @@ var tests = [
   require('./tests/numerics'),
   require('./tests/mixed'),
   require('./tests/heavy-nested'),
+  require('./tests/huge-complex'),
   require('./tests/huge-buffer')
 ];
 
@@ -288,28 +289,28 @@ function printResults() {
   isRunning = false;
 
   console.log('* RESULTS:');
-  console.log('\r\n* Wall Clock (ms):');
-  benchmarks.forEach(function(benchmark) {
-    printWallClock(benchmark, benchmark, benchmarks[0]);
-    Object.keys(benchmark.results).forEach(function(k) {
-      printWallClock(benchmark, benchmark.results[k].read, benchmarks[0].results[k].read);
-      printWallClock(benchmark, benchmark.results[k].write, benchmarks[0].results[k].write);
-    });
-  });
-  console.log('\r\n* CPU Clock (ms): *** NOTE: Includes all cpu usage -- run only on idle system');
-  benchmarks.forEach(function(benchmark) {
-    printCPUClock(benchmark, benchmark, benchmarks[0]);
-    Object.keys(benchmark.results).forEach(function(k) {
-      printCPUClock(benchmark, benchmark.results[k].read, benchmarks[0].results[k].read);
-      printCPUClock(benchmark, benchmark.results[k].write, benchmarks[0].results[k].write);
-    });
-  });
   console.log('\r\n* Throughput (KByte/sec):');
   benchmarks.forEach(function(benchmark) {
     printThroughput(benchmark, benchmark, benchmarks[0]);
     Object.keys(benchmark.results).forEach(function(k) {
       printThroughput(benchmark, benchmark.results[k].read, benchmarks[0].results[k].read);
       printThroughput(benchmark, benchmark.results[k].write, benchmarks[0].results[k].write);
+    });
+  });
+  /*console.log('\r\n* Wall Clock (ms):');
+  benchmarks.forEach(function(benchmark) {
+    printWallClock(benchmark, benchmark, benchmarks[0]);
+    Object.keys(benchmark.results).forEach(function(k) {
+      printWallClock(benchmark, benchmark.results[k].read, benchmarks[0].results[k].read);
+      printWallClock(benchmark, benchmark.results[k].write, benchmarks[0].results[k].write);
+    });
+  });*/
+  console.log('\r\n* CPU Clock (ms): *** NOTE: Includes all cpu usage -- run only on idle system');
+  benchmarks.forEach(function(benchmark) {
+    printCPUClock(benchmark, benchmark, benchmarks[0]);
+    Object.keys(benchmark.results).forEach(function(k) {
+      printCPUClock(benchmark, benchmark.results[k].read, benchmarks[0].results[k].read);
+      printCPUClock(benchmark, benchmark.results[k].write, benchmarks[0].results[k].write);
     });
   });
   console.log('\r\n* Avg Event Lag (ms):');
