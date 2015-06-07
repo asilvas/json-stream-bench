@@ -11,6 +11,7 @@ function test() {
   var lastNode = obj;
   for (var i = 0; i < 30; i++) {
     lastNode = lastNode.a = {};
+    lastNode.b = Math.round(Math.random() * 0xffff);
   }
 
   return obj;
