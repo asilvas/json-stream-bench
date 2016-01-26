@@ -17,10 +17,10 @@ module.exports = {
     })
     ;
 
-    setTimeout(function() {
+    setImmediate(function() {
       stream.write(obj);
       stream.end();
-    }, 10);
+    });
   },
   reader: function(json, cb) {
     var parser = JSONStream.parse();
@@ -36,10 +36,10 @@ module.exports = {
     })
     ;
 
-    setTimeout(function() {
+    setImmediate(function() {
       parser.write(json);
       parser.end();
-    }, 10);
+    });
 
   }
 };
